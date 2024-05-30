@@ -1,0 +1,143 @@
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000000;
+    opacity: 0.7;
+}
+
+code {
+    background-color: #EEEEEE;
+    padding: 5px;
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.container-fluid, .main {
+    padding: 0 !important;
+}
+
+.main {
+    display: flex;
+}
+
+.conteudo {
+    background: #EEEEEE;
+}
+
+.cabecalho {
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 42px;
+    border-bottom: 1px solid #DDDFE0;
+}
+
+.cabecalho-label {
+    padding: 15px;
+    font-size: 27px;
+    color: #3D4F61;
+    font-weight: 500;
+    line-height: 15px;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.w-90 {
+    width: 90% !important;
+}
+
+.w-35 {
+    width: 35% !important;
+}
+
+.w-25 {
+    width: 25% !important;
+}
+
+.w-15 {
+    width: 15% !important;
+}
+
+.pl-50 {
+    padding-left: 50px !important;
+}
+
+.margin-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.txt-end {
+    text-align: end;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.ml-10 {
+    margin-left: 10px !important;
+}
+
+.ml-45 {
+    margin-left: 50px !important;
+}
+
+.ml-50 {
+    margin-left: 50px !important;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+#sign-out {
+    cursor: pointer;
+    width: 75px;
+}
+
+.div-info p {
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+#table-body {
+    font-size: 13px;
+}
+
+.arrow-pagination {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#page-number {
+    font-size: 20px;
+    cursor: not-allowed;
+}
