@@ -29,7 +29,6 @@ exports.create = (req, res) => {
     const word = new Words({
         word: req.body.word,
         phonetic: req.body.phonetic,
-        origin: req.body.origin,
         meanings: req.body.meanings,
         favorite: req.body.favorite
     });

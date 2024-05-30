@@ -7,9 +7,6 @@ module.exports = (sequelize, Sequelize) => {
         phonetic: {
             type: Sequelize.STRING
         },
-        origin: {
-            type: Sequelize.STRING
-        },
         meanings: {
             type: Sequelize.STRING
         },

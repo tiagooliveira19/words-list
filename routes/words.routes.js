@@ -5,10 +5,10 @@ module.exports = app => {
     var router = require("express").Router();
 
     // Creates a new word
-    router.post("/add", words.create);
+    router.post("/word", words.create);
 
     // Fetches all words
     router.get("/", words.findAll);
 
-    app.use('/api/words', router);
+    app.use('/entries/en', router);
 }

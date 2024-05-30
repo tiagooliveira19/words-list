@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <div class="col-md-12 ml-45 mt-5 display-flex">
-        <div class="col-md-3">
+    <div class="col-md-6 mt-5 display-flex">
+        <div class="col-md-8 ms-5">
             <input class="form-control" type="text" id="search-word" placeholder="Type the word">
         </div>
 
@@ -31,12 +31,10 @@
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Type</th>
-                        <th>Date</th>
-                        <th>Product</th>
-                        <th>Value</th>
-                        <th>Seller</th>
+                        <th>Word</th>
+                        <th>Phonetic</th>
+                        <th>Meanings</th>
+                        <th>Favorite</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">

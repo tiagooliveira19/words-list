@@ -14,7 +14,7 @@
     $(document).ready(function () {
 
         // Fetches and listing all transactions
-        fetchesTransactions(0);
+        // fetchesTransactions(0);
 
         // Changes layout structure when user is not logged
         startsPage();
@@ -49,24 +49,6 @@
             setTimeout(function () {
                 location.reload();
             }, 1800);
-        });
-
-        // Submits file to upload
-        $('#load-file').click(function () {
-
-            if ($('#upload-file').val() === '') {
-                toastr.error('File field cannot be empty!', '', {
-                    closeButton: true,
-                    progressBar: true,
-                    positionClass: "toast-top-right",
-                    preventDuplicates: true,
-                    showDuration: "300",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                });
-            } else {
-                importesFile();
-            }
         });
 
         // Phone mask

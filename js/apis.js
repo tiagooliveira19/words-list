@@ -16,10 +16,49 @@ $('#btn-search').click(function () {
 
     $.get('https://api.dictionaryapi.dev/api/v2/entries/en/' + search, function (response, status) {
 
-        console.log(status);
+        // console.log(status);
 
         if (status === 'success') {
-            console.log(response);
+            // console.log(response);
+
+            let table_body = 'table-body';
+            let word = response[0]['word'];
+            let phonetics = [];
+            let meanings = [];
+
+            $('#' + table_body).empty();
+
+            for (var i = 0; i < response[0]['phonetics'].length; i++) {
+                if (response[0]['phonetics'][i]['text']) {
+                    phonetics.push(response[0]['phonetics'][i]['text']);
+                }
+            }
+
+            for (var i = 0; i < response[0]['meanings'].length; i++) {
+                if (response[0]['meanings'][i]['partOfSpeech']) {
+                    meanings.push(response[0]['meanings'][i]['partOfSpeech']);
+                }
+            }
+
+            $('#' + table_body)
+                    .append(
+                        '<tr>'+
+                        '<td>'+ word +'</td>' +
+                        '<td>'+ phonetics.join(', ') +'</td>' +
+                        '<td>'+ meanings.join(', ') +'</td>' +
+                        '<td>'+ '' +'</td>' +
+                        '</tr>'
+                    );
+
+            let data = {
+                'word' : word,
+                'phonetic' : phonetics.join(', '),
+                'meanings' : meanings.join(', '),
+                'favorite' : 0
+            };
+
+            registerWord (data);
+
         } else {
     
             toastr.error('No Definitions Found', '', {
@@ -153,54 +192,11 @@ function userLogged () {
     $('#form-content').removeClass('hidden').fadeIn('fast');
 }
 
-// Importes data from file
-/* function importesFile () {
-    let file = document.querySelector('input[type=file]').files[0];
-    let reader = new FileReader();
-
-    reader.readAsText(file);
-
-    reader.onload = () => {
-
-        var txt = reader.result;
-        var records = txt.split('\n');
-
-        records.pop();
-
-        records.forEach(function (record) {
-            formatesRecords(record);
-        });
-    }
-} */
-
-// Formates records to save in database
-/* function formatesRecords (record) {
-
-    let tipo = record.substring(0, 1);
-
-    let data = record.substring(1, 26);
-    data = formatesDate(new Date(data));
-
-    let produto = record.substring(26, 56);
-    let valor = record.substring(56, 66);
-    let vendedor = record.substring(66, 86);
-
-    let dados = {
-        'tipo' : tipo,
-        'data' : data,
-        'produto' : produto,
-        'valor' : valor,
-        'vendedor' : vendedor
-    }
-
-    registerTransactions(dados);
-} */
-
-// Registers transaction in database
-function registerTransactions (data) {
+// Registers word in database
+function registerWord (data) {
 
     $.ajax({
-        url: 'http://localhost:3000/api/transacoes/add',
+        url: 'http://localhost:3000/entries/en/word',
         dataType: 'json',
         type: 'post',
         data: data,
@@ -228,7 +224,7 @@ function registerTransactions (data) {
 }
 
 // Fetches and listing all transactions
-function fetchesTransactions (page) {
+/* function fetchesTransactions (page) {
 
     $.get('http://localhost:3000/api/transacoes?page=' + page, function (response) {
 
@@ -279,10 +275,10 @@ function fetchesTransactions (page) {
             $('#div-pagination').addClass('hidden');
         }
     });
-}
+} */
 
 // Calculates the total value of transactions
-function calculatesValues (type, value, totalValue) {
+/* function calculatesValues (type, value, totalValue) {
 
     if (type === '1' || type === '2' || type === '4') {
         totalValue+= value;
@@ -291,7 +287,7 @@ function calculatesValues (type, value, totalValue) {
     }
 
     return totalValue;
-}
+} */
 
 // Changes date to database format
 function formatesDate (data) {

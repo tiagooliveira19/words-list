@@ -105,3 +105,6 @@ dist
 
 # Configurações IDE
 /.idea
+
+#My Files
+scratch.js

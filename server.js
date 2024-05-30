@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 });
 
 require("./routes/usuarios.routes")(app);
-require("./routes/transacoes.routes")(app);
 require("./routes/words.routes")(app);
 
 // set port, listen for requests

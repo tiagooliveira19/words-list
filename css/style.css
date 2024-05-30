@@ -49,28 +49,12 @@ code {
     line-height: 15px;
 }
 
-.w-100 {
-    width: 100% !important;
-}
-
 .w-90 {
     width: 90% !important;
 }
 
 .w-35 {
     width: 35% !important;
-}
-
-.w-25 {
-    width: 25% !important;
-}
-
-.w-15 {
-    width: 15% !important;
-}
-
-.pl-50 {
-    padding-left: 50px !important;
 }
 
 .margin-auto {
@@ -86,10 +70,6 @@ code {
     text-align: end;
 }
 
-.display-block {
-    display: block;
-}
-
 .display-flex {
     display: flex;
 }
@@ -98,20 +78,8 @@ code {
     display: none !important;
 }
 
-.ml-auto {
-    margin-left: auto;
-}
-
 .ml-10 {
     margin-left: 10px !important;
-}
-
-.ml-45 {
-    margin-left: 50px !important;
-}
-
-.ml-50 {
-    margin-left: 50px !important;
 }
 
 .pointer {

@@ -20,7 +20,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.usuarios = require('./usuarios')(sequelize, Sequelize);
-db.transacoes = require('./transacoes')(sequelize, Sequelize);
-db.transacoes = require('./words')(sequelize, Sequelize);
+db.words = require('./words')(sequelize, Sequelize);
 
 module.exports = db;
