@@ -24,7 +24,7 @@
         <p><span id="total-itens">0</span> record(s) available in our database:</p>
 
         <div class="col-md-11 margin-auto mt-5">
-            <table class="table table-striped table-dark">
+            <table class="table table-striped table-dark text-center">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
                 <tbody id="table-body-historic">
-                    <tr class="txt-center">
+                    <tr class="text-center">
                         <td colspan="7">No record found!</td>
                     </tr>
                 </tbody>
@@ -46,7 +46,7 @@
 
         <div class="col-md-10 mt-4 mb-4 display-flex hidden" id="div-pagination">
             <div class="col-md-3"></div>
-            <div class="col-md-4 txt-center margin-auto">
+            <div class="col-md-4 text-center margin-auto">
                 <span class="arrow-pagination" id="previous" title="Anterior">
                     <i class="fa-solid fa-chevron-left"></i>
                 </span>

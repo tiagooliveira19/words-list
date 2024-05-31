@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const db = require('../models');
 const Words = db.words;
 
@@ -45,7 +46,7 @@ exports.create = (req, res) => {
         });
 };
 
-// Fetch word by search data
+// Fetches word by search data
 exports.search = (req, res) => {
 
     const { page, size } = req.query;
@@ -63,6 +64,24 @@ exports.search = (req, res) => {
             });
         });
 };
+
+// Favorites word
+exports.favorite = (req, res) => {
+    
+    const { page, size } = req.query;
+    const { limit } = getPagination(page, size);
+
+    Words.update({ favorite: 1 }, { where : { word: req.body.word } })
+        .then(data => {
+            const response = getPagingData(data, page, limit);
+            res.send(response);
+        })
+        .catch(err => {
+            res.status(204).send({
+                message: "Error to favorite word " + req.body.word + '!'
+            });
+        });
+}
 
 // Fetches all transactions
 exports.findAll = (req, res) => {

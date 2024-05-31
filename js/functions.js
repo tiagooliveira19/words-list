@@ -2,7 +2,6 @@
 
 // Changes layout structure when user is not logged
 function startsPage () {
-    // $('#login').addClass('item-menu-ativo');
     $('#login').addClass('light-gray');
     $('.login').fadeIn('fast');
     $('.words, #form-content, #sign-out, .historic, #form-content-historic').addClass('hidden').fadeOut('fast');
@@ -11,11 +10,9 @@ function startsPage () {
 // Changes layout structure when user is logged
 function userLogged () {
     $('.login').addClass('hidden').fadeOut('fast');
-    // $('#login').removeClass('item-menu-ativo').fadeOut('fast');
     $('#login').removeClass('light-gray').fadeOut('fast');
 
     $('.words').removeClass('hidden').fadeIn('fast');
-    // $('#words').removeClass('hidden').addClass('item-menu-ativo').fadeIn('fast');
     $('#words').removeClass('hidden').addClass('light-gray').fadeIn('fast');
     $('#form-content, #sign-out, #historic').removeClass('hidden').fadeIn('fast');
 }

@@ -1,3 +1,14 @@
+$(document).on("click", ".favorite", function() { 
+
+    let word = $(this).attr('id');
+
+    let data = {
+        'word' : word
+    };
+
+    favoriteWord (data);
+});
+
 // Fetches and listing all words
 function fetchesWords (page) {
 
@@ -27,14 +38,73 @@ function fetchesWords (page) {
                         '<td>'+ json['word'] +'</td>' +
                         '<td>'+ json['phonetic'] +'</td>' +
                         '<td>'+ json['meanings'] +'</td>' +
-                        '<td>'+ json['favorite'] +'</td>' +
+                        '<td>'+ verifiesFavorite (json['favorite'], json['word']) +'</td>' +
+                        /* '<td><i class="fa-regular fa-star favorite" id="'+ json['word'] +'"></i></td>' + */
+                        /* '<td>'+ json['favorite'] +'</td>' + */
                         '</tr>'
                     );
             });
         } else {
             $('#table-body-historic')
-                .html('<tr class="txt-center"><td colspan="7">No record found!</td></tr>');
+                .html('<tr class="text-center"><td colspan="7">No record found!</td></tr>');
             $('#div-pagination').addClass('hidden');
         }
+    });
+}
+
+// Virifies favorite
+function verifiesFavorite (favorite, word) {
+
+    let icon = '';
+
+    if (favorite === 1) {
+        icon = '<i class="fa-solid fa-star unfavorite" id="'+ word +'"></i>';
+    } else {
+        icon = '<i class="fa-regular fa-star favorite" id="'+ word +'"></i>';
+    }
+
+    return icon;
+}
+
+// Favorites word
+function favoriteWord (data) {
+
+    $.ajax({
+        url: 'http://localhost:3000/entries/en/word/favorite',
+        dataType: 'json',
+        type: 'post',
+        data: data,
+
+        success: function (response) {
+
+            console.log(response);
+
+            toastr.success('Word favorited!', '', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                showDuration: "300",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            });
+
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        },
+
+        /* error: function (response) {
+
+            toastr.error(response['responseJSON']['message'], '', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                showDuration: "300",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            });
+        } */
     });
 }

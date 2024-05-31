@@ -6,7 +6,7 @@
     <div class="col-md-12 mt-5">
         <div class="col-md-4 margin-auto">
 
-            <div class="txt-center">
+            <div class="text-center">
                 <img src="images/login.svg" class="w-35" alt="imagem-login" id="imagem-login" >
             </div>
 
@@ -37,7 +37,7 @@
     <div class="col-md-12 mt-5">
         <div class="col-md-4 margin-auto">
 
-            <div class="txt-center">
+            <div class="text-center">
                 <img src="images/user.svg" class="w-35" alt="imagem-cadastro" id="imagem-cadastro" >
             </div>
 

@@ -7,8 +7,11 @@ module.exports = app => {
     // Creates a new word
     router.post("/word", words.create);
 
-    // Fetch word by search data
+    // Fetches word by search data
     router.get("/word", words.search);
+
+    // Favorites word
+    router.post("/word/favorite", words.favorite);
 
     // Fetches all words
     router.get("/", words.findAll);
