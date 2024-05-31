@@ -32,6 +32,7 @@ code {
 
 .conteudo {
     background: #EEEEEE;
+    min-height: 680px;
 }
 
 .cabecalho {
@@ -47,6 +48,31 @@ code {
     color: #3D4F61;
     font-weight: 500;
     line-height: 15px;
+}
+
+/* Navbar */
+
+.navbar {
+    box-shadow: inset -4px 12px 8px 13px rgba(0, 0, 0, .2);
+    height: 60px;
+}
+
+.navbar a {
+    cursor: pointer;
+}
+
+.navbar-nav {
+    flex-direction: row !important;
+    justify-content: space-evenly;
+}
+
+.nav-link {
+    color: #FFFFFF !important;
+}
+
+.nav-item {
+    margin-left: 15px;
+    font-weight: 600;
 }
 
 .w-90 {
@@ -86,10 +112,10 @@ code {
     cursor: pointer !important;
 }
 
-#sign-out {
+/* #sign-out {
     cursor: pointer;
     width: 75px;
-}
+} */
 
 .div-info p {
     margin-left: 50px;
@@ -108,4 +134,20 @@ code {
 #page-number {
     font-size: 18px;
     cursor: not-allowed;
+}
+
+.icon-logout {
+    font-size: 18px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+/* Colors */
+
+.light-gray {
+    color: #CCCCCC !important;
+}
+
+.white {
+    color: #FFFFFF !important;
 }

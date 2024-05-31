@@ -19,10 +19,10 @@
                 </div>
 
                 <div class="col mt-3">
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <button type="submit" class="btn btn-dark w-100">Login</button>
                 </div>
                 <div class="col mt-3">
-                    <button type="button" class="btn btn-danger w-100" id="btn-register">Register</button>
+                    <button type="button" class="btn btn-primary w-100" id="btn-register">Register</button>
                 </div>
             </form>
         </div>
@@ -56,10 +56,10 @@
                 </div>
 
                 <div class="col mt-3">
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <button type="submit" class="btn btn-dark w-100">Register</button>
                 </div>
                 <div class="col mt-3">
-                    <button type="button" class="btn btn-danger w-100" id="btn-login">Login</button>
+                    <button type="button" class="btn btn-primary w-100" id="btn-login">Login</button>
                 </div>
             </form>
         </div>
