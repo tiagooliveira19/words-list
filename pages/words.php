@@ -58,9 +58,6 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </span>
             </div>
-            <div class="col-md-3 txt-end">
-                <b>Amount:</b> <span id="total-value"></span> <!--Per page-->
-            </div>
         </div>
     </div>
 </div>

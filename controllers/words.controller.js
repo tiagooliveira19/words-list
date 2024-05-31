@@ -40,7 +40,26 @@ exports.create = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "An error occurred while creating the transaction!"
+                message: "An error occurred while creating the word!"
+            });
+        });
+};
+
+// Fetch word by search data
+exports.search = (req, res) => {
+
+    const { page, size } = req.query;
+    const { limit } = getPagination(page, size);
+
+    Words.findOne({ where: { word: req.body.word } })
+        .then(data => {
+            // const response = getPagingData(data, page, limit);
+            const response = data.dataValues;
+            res.send(response);
+        })
+        .catch(err => {
+            res.status(204).send({
+                message: "Error fetching word " + req.body.word + '. No register found!'
             });
         });
 };
@@ -58,7 +77,7 @@ exports.findAll = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "An error occurred while fetching transactions!"
+                message: "An error occurred while fetching words!"
             });
         });
 };

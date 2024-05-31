@@ -6,15 +6,18 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"
         integrity="sha512-sR3EKGp4SG8zs7B0MEUxDeq8rw9wsuGVYNfbbO/GLCJ59LBE4baEfQBVsP2Y/h2n8M19YV1mujFANO1yA3ko7Q==" crossorigin="anonymous"></script>
+
 <script src="js/toastr.js"></script>
 <script type="text/javascript" src="/js/menu.js"></script>
-<script type="text/javascript" src="/js/apis.js"></script>
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="/js/user.js"></script>
+<script type="text/javascript" src="/js/word.js"></script>
 <script>
 
     $(document).ready(function () {
 
-        // Fetches and listing all transactions
-        // fetchesTransactions(0);
+        // Fetches and listing all words
+        fetchesWords(0);
 
         // Changes layout structure when user is not logged
         startsPage();
@@ -77,7 +80,7 @@
             let currentPage = $('#current-page').val();
             let page = parseInt(currentPage) + 1;
 
-            fetchesTransactions(page);
+            fetchesWords(page);
         });
 
         // Switches to previous page
@@ -86,7 +89,7 @@
             let currentPage = $('#current-page').val();
             let page = parseInt(currentPage) - 1;
 
-            fetchesTransactions(page);
+            fetchesWords(page);
         });
     });
 </script>

@@ -7,6 +7,9 @@ module.exports = app => {
     // Creates a new word
     router.post("/word", words.create);
 
+    // Fetch word by search data
+    router.get("/word", words.search);
+
     // Fetches all words
     router.get("/", words.findAll);
 
