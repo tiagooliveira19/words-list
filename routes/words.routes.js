@@ -13,6 +13,12 @@ module.exports = app => {
     // Favorites word
     router.post("/word/favorite", words.favorite);
 
+    // Unfavorites word
+    router.post("/word/unfavorite", words.unFavorite);
+
+    // Deletes word
+    router.delete("/word", words.delete);
+
     // Fetches all words
     router.get("/", words.findAll);
 

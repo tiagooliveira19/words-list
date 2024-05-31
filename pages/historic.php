@@ -32,6 +32,7 @@
                         <th>Phonetic</th>
                         <th>Meanings</th>
                         <th>Favorite</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="table-body-historic">

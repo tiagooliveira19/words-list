@@ -83,6 +83,24 @@ exports.favorite = (req, res) => {
         });
 }
 
+// Unfavorites word
+exports.unFavorite = (req, res) => {
+    
+    const { page, size } = req.query;
+    const { limit } = getPagination(page, size);
+
+    Words.update({ favorite: 0 }, { where : { word: req.body.word } })
+        .then(data => {
+            const response = getPagingData(data, page, limit);
+            res.send(response);
+        })
+        .catch(err => {
+            res.status(204).send({
+                message: "Error to unfavorite word " + req.body.word + '!'
+            });
+        });
+}
+
 // Fetches all transactions
 exports.findAll = (req, res) => {
 
@@ -100,3 +118,22 @@ exports.findAll = (req, res) => {
             });
         });
 };
+
+
+// Deletes word
+exports.delete = (req, res) => {
+    
+    const { page, size } = req.query;
+    const { limit } = getPagination(page, size);
+
+    Words.destroy({ where : { word: req.body.word } })
+        .then(data => {
+            const response = getPagingData(data, page, limit);
+            res.send(response);
+        })
+        .catch(err => {
+            res.status(204).send({
+                message: "Error to delete word " + req.body.word + '!'
+            });
+        });
+}

@@ -9,6 +9,28 @@ $(document).on("click", ".favorite", function() {
     favoriteWord (data);
 });
 
+$(document).on("click", ".unfavorite", function() { 
+
+    let word = $(this).attr('id');
+
+    let data = {
+        'word' : word
+    };
+
+    unfavoriteWord (data);
+});
+
+$(document).on("click", ".delete", function() { 
+
+    let word = $(this).attr('id');
+
+    let data = {
+        'word' : word
+    };
+
+    deleteWord (data);
+});
+
 // Fetches and listing all words
 function fetchesWords (page) {
 
@@ -39,8 +61,7 @@ function fetchesWords (page) {
                         '<td>'+ json['phonetic'] +'</td>' +
                         '<td>'+ json['meanings'] +'</td>' +
                         '<td>'+ verifiesFavorite (json['favorite'], json['word']) +'</td>' +
-                        /* '<td><i class="fa-regular fa-star favorite" id="'+ json['word'] +'"></i></td>' + */
-                        /* '<td>'+ json['favorite'] +'</td>' + */
+                        '<td><i class="fa-solid fa-trash icon-delete delete" id="'+ json['word'] +'" title="Delete"></i></td>' +
                         '</tr>'
                     );
             });
@@ -58,9 +79,9 @@ function verifiesFavorite (favorite, word) {
     let icon = '';
 
     if (favorite === 1) {
-        icon = '<i class="fa-solid fa-star unfavorite" id="'+ word +'"></i>';
+        icon = '<i class="fa-solid fa-star icon-star unfavorite" id="'+ word +'" title="Unfavorite"></i>';
     } else {
-        icon = '<i class="fa-regular fa-star favorite" id="'+ word +'"></i>';
+        icon = '<i class="fa-regular fa-star icon-star favorite" id="'+ word +'" title="Favorite"></i>';
     }
 
     return icon;
@@ -77,9 +98,89 @@ function favoriteWord (data) {
 
         success: function (response) {
 
-            console.log(response);
-
             toastr.success('Word favorited!', '', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                showDuration: "300",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            });
+
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        },
+
+        /* error: function (response) {
+
+            toastr.error(response['responseJSON']['message'], '', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                showDuration: "300",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            });
+        } */
+    });
+}
+
+// Unfavorites word
+function unfavoriteWord (data) {
+
+    $.ajax({
+        url: 'http://localhost:3000/entries/en/word/unfavorite',
+        dataType: 'json',
+        type: 'post',
+        data: data,
+
+        success: function (response) {
+
+            toastr.success('Word unfavorited!', '', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                showDuration: "300",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            });
+
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        },
+
+        /* error: function (response) {
+
+            toastr.error(response['responseJSON']['message'], '', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                showDuration: "300",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            });
+        } */
+    });
+}
+
+// Deletes word
+function deleteWord (data) {
+
+    $.ajax({
+        url: 'http://localhost:3000/entries/en/word',
+        dataType: 'json',
+        type: 'delete',
+        data: data,
+
+        success: function (response) {
+
+            toastr.success('Word deleted!', '', {
                 closeButton: true,
                 progressBar: true,
                 positionClass: "toast-top-right",

@@ -88,14 +88,6 @@ code {
     margin-right: auto;
 }
 
-/* .txt-center {
-    text-align: center;
-} */
-
-.txt-end {
-    text-align: end;
-}
-
 .display-flex {
     display: flex;
 }
@@ -111,11 +103,6 @@ code {
 .pointer {
     cursor: pointer !important;
 }
-
-/* #sign-out {
-    cursor: pointer;
-    width: 75px;
-} */
 
 .div-info p {
     margin-left: 50px;
@@ -139,6 +126,10 @@ code {
 .icon-logout {
     font-size: 18px;
     padding-top: 10px;
+    cursor: pointer;
+}
+
+.icon-star, .icon-delete {
     cursor: pointer;
 }
 
