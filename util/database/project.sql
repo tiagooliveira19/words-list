@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Ago-2023 às 20:32
+-- Tempo de geração: 01-Jun-2024 às 15:07
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -24,16 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `transacoes`
+-- Estrutura da tabela `users`
 --
 
-CREATE TABLE `transacoes` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(255) DEFAULT NULL,
-  `data` datetime DEFAULT NULL,
-  `produto` varchar(255) DEFAULT NULL,
-  `valor` varchar(255) DEFAULT NULL,
-  `vendedor` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT current_timestamp(),
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,15 +40,15 @@ CREATE TABLE `transacoes` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura da tabela `words`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `words` (
   `id` int(11) NOT NULL,
-  `nome` varchar(255) DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `telefone` varchar(255) DEFAULT NULL,
-  `endereco` varchar(255) DEFAULT NULL,
+  `word` varchar(255) DEFAULT NULL,
+  `phonetic` varchar(255) DEFAULT NULL,
+  `meanings` varchar(255) DEFAULT NULL,
+  `favorite` int(11) DEFAULT NULL,
   `createdAt` datetime DEFAULT current_timestamp(),
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -59,15 +58,15 @@ CREATE TABLE `usuarios` (
 --
 
 --
--- Índices para tabela `transacoes`
+-- Índices para tabela `users`
 --
-ALTER TABLE `transacoes`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuarios`
+-- Índices para tabela `words`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `words`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -75,15 +74,15 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `transacoes`
+-- AUTO_INCREMENT de tabela `users`
 --
-ALTER TABLE `transacoes`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT de tabela `words`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `words`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
