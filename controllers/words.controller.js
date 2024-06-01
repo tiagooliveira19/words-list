@@ -17,7 +17,7 @@ const getPagingData = (data, page, limit) => {
     return { totalItems, words, totalPages, currentPage };
 };
 
-// Creates and saves a new word
+// Creates and saves a favorite word
 exports.create = (req, res) => {
     // Validates a request
     if (!req.body) {
@@ -52,7 +52,7 @@ exports.search = (req, res) => {
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
 
-    Words.findOne({ where: { word: req.body.word } })
+    Words.findOne({ where: { word: req.params.word } })
         .then(data => {
             // const response = getPagingData(data, page, limit);
             const response = data.dataValues;
@@ -66,7 +66,7 @@ exports.search = (req, res) => {
 };
 
 // Favorites word
-exports.favorite = (req, res) => {
+/* exports.favorite = (req, res) => {
     
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
@@ -81,10 +81,10 @@ exports.favorite = (req, res) => {
                 message: "Error to favorite word " + req.body.word + '!'
             });
         });
-}
+} */
 
 // Unfavorites word
-exports.unFavorite = (req, res) => {
+/* exports.unFavorite = (req, res) => {
     
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
@@ -99,9 +99,9 @@ exports.unFavorite = (req, res) => {
                 message: "Error to unfavorite word " + req.body.word + '!'
             });
         });
-}
+} */
 
-// Fetches all transactions
+// Fetches all words
 exports.findAll = (req, res) => {
 
     const { page, size } = req.query;
@@ -126,7 +126,7 @@ exports.delete = (req, res) => {
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
 
-    Words.destroy({ where : { word: req.body.word } })
+    Words.destroy({ where : { word: req.params.word } })
         .then(data => {
             const response = getPagingData(data, page, limit);
             res.send(response);

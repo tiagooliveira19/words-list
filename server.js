@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 
 require("./routes/users.routes")(app);
 require("./routes/words.routes")(app);
+require("./routes/historic.routes")(app);
 
 // set port, listen for requests
 app.listen(3000, '127.0.0.1',() => {

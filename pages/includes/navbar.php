@@ -5,11 +5,12 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link light-gray" aria-current="page" id="login">Login</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link hidden" id="words">Words</a>
                     </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link hidden" id="words">Words</a>
+                    </li> -->
 
                     <li class="nav-item">
                         <a class="nav-link hidden" id="historic">Historic</a>

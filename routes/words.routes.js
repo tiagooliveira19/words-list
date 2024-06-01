@@ -5,19 +5,22 @@ module.exports = app => {
     var router = require("express").Router();
 
     // Creates a new word
-    router.post("/word", words.create);
+    // router.post("/word", words.create);
 
     // Fetches word by search data
-    router.get("/word", words.search);
+    // router.get("/word", words.search);
+    router.get("/:word", words.search);
 
-    // Favorites word
-    router.post("/word/favorite", words.favorite);
+    // Favorites and saves word
+    // router.post("/word/favorite", words.favorite);
+    router.post("/word/favorite", words.create);
 
-    // Unfavorites word
-    router.post("/word/unfavorite", words.unFavorite);
+    // Unfavorites and deletes word
+    // router.post("/word/unfavorite", words.unFavorite);
+    router.delete("/:word/unfavorite", words.delete);
 
     // Deletes word
-    router.delete("/word", words.delete);
+    // router.delete("/word", words.delete);
 
     // Fetches all words
     router.get("/", words.findAll);

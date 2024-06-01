@@ -1,4 +1,4 @@
-$(document).on("click", ".favorite", function() { 
+/* $(document).on("click", ".favorite", function() { 
 
     let word = $(this).attr('id');
 
@@ -7,7 +7,7 @@ $(document).on("click", ".favorite", function() {
     };
 
     favoriteWord (data);
-});
+}); */
 
 $(document).on("click", ".unfavorite", function() { 
 
@@ -20,7 +20,7 @@ $(document).on("click", ".unfavorite", function() {
     unfavoriteWord (data);
 });
 
-$(document).on("click", ".delete", function() { 
+/* $(document).on("click", ".delete", function() { 
 
     let word = $(this).attr('id');
 
@@ -29,7 +29,7 @@ $(document).on("click", ".delete", function() {
     };
 
     deleteWord (data);
-});
+}); */
 
 // Fetches and listing all words
 function fetchesWords (page) {
@@ -61,7 +61,7 @@ function fetchesWords (page) {
                         '<td>'+ json['phonetic'] +'</td>' +
                         '<td>'+ json['meanings'] +'</td>' +
                         '<td>'+ verifiesFavorite (json['favorite'], json['word']) +'</td>' +
-                        '<td><i class="fa-solid fa-trash icon-delete delete" id="'+ json['word'] +'" title="Delete"></i></td>' +
+                        /* '<td><i class="fa-solid fa-trash icon-delete delete" id="'+ json['word'] +'" title="Delete"></i></td>' + */
                         '</tr>'
                     );
             });
@@ -111,20 +111,7 @@ function favoriteWord (data) {
             setTimeout(function () {
                 location.reload();
             }, 2000);
-        },
-
-        /* error: function (response) {
-
-            toastr.error(response['responseJSON']['message'], '', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: "toast-top-right",
-                preventDuplicates: true,
-                showDuration: "300",
-                showMethod: "fadeIn",
-                hideMethod: "fadeOut"
-            });
-        } */
+        }
     });
 }
 
@@ -132,10 +119,11 @@ function favoriteWord (data) {
 function unfavoriteWord (data) {
 
     $.ajax({
-        url: 'http://localhost:3000/entries/en/word/unfavorite',
+        url: 'http://localhost:3000/entries/en/'+ data['word'] +'/unfavorite',
         dataType: 'json',
-        type: 'post',
-        data: data,
+        type: 'delete',
+        // type: 'post',
+        // data: data,
 
         success: function (response) {
 
@@ -152,25 +140,12 @@ function unfavoriteWord (data) {
             setTimeout(function () {
                 location.reload();
             }, 2000);
-        },
-
-        /* error: function (response) {
-
-            toastr.error(response['responseJSON']['message'], '', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: "toast-top-right",
-                preventDuplicates: true,
-                showDuration: "300",
-                showMethod: "fadeIn",
-                hideMethod: "fadeOut"
-            });
-        } */
+        }
     });
 }
 
 // Deletes word
-function deleteWord (data) {
+/* function deleteWord (data) {
 
     $.ajax({
         url: 'http://localhost:3000/entries/en/word',
@@ -193,19 +168,6 @@ function deleteWord (data) {
             setTimeout(function () {
                 location.reload();
             }, 2000);
-        },
-
-        /* error: function (response) {
-
-            toastr.error(response['responseJSON']['message'], '', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: "toast-top-right",
-                preventDuplicates: true,
-                showDuration: "300",
-                showMethod: "fadeIn",
-                hideMethod: "fadeOut"
-            });
-        } */
+        }
     });
-}
+} */

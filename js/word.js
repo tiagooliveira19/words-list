@@ -7,6 +7,7 @@ $('#btn-search').click(function () {
         // console.log(status);
 
         if (status === 'success') {
+            
             // console.log(response);
 
             let table_body = 'table-body';
@@ -42,14 +43,18 @@ $('#btn-search').click(function () {
                 'word' : word,
                 'phonetic' : phonetics.join(', '),
                 'meanings' : meanings.join(', '),
-                'favorite' : 0
+                'favorite' : 1
             };
 
             let dataSearch = {
                 'word' : word
             };
 
-            searchWord (dataSearch, data);
+            searchWordHistoric (dataSearch, data);
+
+            $(document).on("click", ".favorite", function() {
+                searchWord (dataSearch, data)
+            });
 
         } else {
     
@@ -70,14 +75,14 @@ $('#btn-search').click(function () {
     });
 });
 
-// Searches word in database
-function searchWord (dataSearch, data) {
+// Searches word in historic
+function searchWordHistoric (dataSearch, data) {
 
     $.ajax({
-        url: 'http://localhost:3000/entries/en/word',
+        url: 'http://localhost:3000/entries/en/historic/' + dataSearch['word'],
         dataType: 'json',
         type: 'get',
-        data: dataSearch,
+        // data: dataSearch,
 
         success: function (response) {
 
@@ -98,20 +103,39 @@ function searchWord (dataSearch, data) {
             } else {
                 registerWord (data);
             }
-        },
+        }
+    });
+}
 
-        /* error: function (response) {
+// Searches word
+function searchWord (dataSearch, data) {
 
-            toastr.warning(response['responseJSON']['message'], '', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: "toast-top-right",
-                preventDuplicates: true,
-                showDuration: "300",
-                showMethod: "fadeIn",
-                hideMethod: "fadeOut"
-            });
-        } */
+    $.ajax({
+        url: 'http://localhost:3000/entries/en/' + dataSearch['word'],
+        dataType: 'json',
+        type: 'get',
+        // data: dataSearch,
+
+        success: function (response) {
+
+            // console.log(response);
+
+            if (response) {
+                
+                toastr.warning('Already favorited word!', '', {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    preventDuplicates: true,
+                    showDuration: "300",
+                    showMethod: "fadeIn",
+                    hideMethod: "fadeOut"
+                });
+
+            } else {
+                favoriteWord (data);
+            }
+        }
     });
 }
 
@@ -119,14 +143,15 @@ function searchWord (dataSearch, data) {
 function registerWord (data) {
 
     $.ajax({
-        url: 'http://localhost:3000/entries/en/word',
+        // url: 'http://localhost:3000/entries/en/word',
+        url: 'http://localhost:3000/entries/en/historic',
         dataType: 'json',
         type: 'post',
         data: data,
 
         success: function (response) {
 
-            toastr.success('Word registered!', '', {
+            toastr.success('Word registered in historic!', '', {
                 closeButton: true,
                 progressBar: true,
                 positionClass: "toast-top-right",

@@ -21,5 +21,6 @@ db.sequelize = sequelize;
 
 db.users = require('./users')(sequelize, Sequelize);
 db.words = require('./words')(sequelize, Sequelize);
+db.historics = require('./historic')(sequelize, Sequelize);
 
 module.exports = db;
