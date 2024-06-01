@@ -1,16 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
 
-    return sequelize.define("usuarios", {
-        nome: {
+    return sequelize.define("users", {
+        name: {
             type: Sequelize.STRING
         },
-        senha: {
+        password: {
             type: Sequelize.STRING
         },
-        telefone: {
+        email: {
             type: Sequelize.STRING
         },
-        endereco: {
+        token: {
             type: Sequelize.STRING
         },
         createdAt: {

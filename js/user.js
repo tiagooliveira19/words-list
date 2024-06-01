@@ -14,7 +14,7 @@ $('#login-form').submit(function (e) {
     e.preventDefault();
 
     let data = $(this).serialize();
-    let name = $('#nome').val();
+    let name = $('#name').val();
 
     fetchesUser(data, name);
 });
@@ -23,7 +23,7 @@ $('#login-form').submit(function (e) {
 function registersUser (data) {
 
     $.ajax({
-        url: 'http://localhost:3000/api/usuarios/add',
+        url: 'http://localhost:3000/api/users/add',
         dataType: 'json',
         type: 'post',
         data: data,
@@ -65,15 +65,15 @@ function registersUser (data) {
 function fetchesUser (data, name) {
 
     $.ajax({
-        url: 'http://localhost:3000/api/usuarios/login',
+        url: 'http://localhost:3000/api/users/login',
         dataType: 'json',
         type: 'post',
         data: data,
 
         success: function (response) {
 
-            localStorage.setItem('LOGADO', 'TRUE');
-            localStorage.setItem('USUARIO_LOGADO', name);
+            localStorage.setItem('LOGGED', 'TRUE');
+            localStorage.setItem('USER_LOGGED', name);
 
             toastr.success('Welcome  ' + name + '!', '', {
                 closeButton: true,

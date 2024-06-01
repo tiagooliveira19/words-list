@@ -22,7 +22,7 @@
 
     <div class="col-md-12 mt-4 div-info">
         <div class="col-md-11 margin-auto mt-5">
-            <table class="table table-striped table-dark">
+            <table class="table table-striped table-dark text-center">
                 <thead>
                     <tr>
                         <th>Word</th>

@@ -34,7 +34,7 @@ $('#btn-search').click(function () {
                         '<td>'+ word +'</td>' +
                         '<td>'+ phonetics.join(', ') +'</td>' +
                         '<td>'+ meanings.join(', ') +'</td>' +
-                        '<td>'+ '' +'</td>' +
+                        '<td><i class="fa-regular fa-star icon-star favorite" id="'+ word +'" title="Favorite"></i></td>' +
                         '</tr>'
                     );
 

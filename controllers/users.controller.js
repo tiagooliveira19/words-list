@@ -1,5 +1,5 @@
 const db = require('../models');
-const Usuarios = db.usuarios;
+const Users = db.users;
 
 const getPagination = (page, size) => {
     const limit = size ? +size : 10;
@@ -9,11 +9,11 @@ const getPagination = (page, size) => {
 };
 
 const getPagingData = (data, page, limit) => {
-    const { count: totalItems, rows: usuarios } = data;
+    const { count: totalItems, rows: users } = data;
     const currentPage = page ? +page : 0;
     const totalPages = Math.ceil(totalItems / limit);
 
-    return { totalItems, usuarios, totalPages, currentPage };
+    return { totalItems, users, totalPages, currentPage };
 };
 
 // Creates and saves a new user
@@ -26,15 +26,16 @@ exports.create = (req, res) => {
     }
 
     // Creates a new user
-    const usuario = new Usuarios({
-        nome: req.body.nome,
-        senha: new Buffer( req.body.senha).toString('base64'), // It does password cryptography
-        telefone: req.body.telefone,
-        endereco: req.body.endereco
+    const user = new Users({
+        name: req.body.name,
+        password: new Buffer( req.body.password).toString('base64'), // It does password cryptography
+        email: req.body.email,
+        token: 'Token'
+        /* token: req.body.token */
     });
 
     // Saves user created at database
-    Usuarios.create(usuario.dataValues)
+    Users.create(user.dataValues)
         .then(data => {
             res.send(data);
         })
@@ -51,14 +52,14 @@ exports.login = (req, res) => {
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
 
-    Usuarios.findOne({ where: { nome: req.body.nome, senha: new Buffer(req.body.senha).toString('base64') } })
+    Users.findOne({ where: { name: req.body.name, password: new Buffer(req.body.password).toString('base64') } })
         .then(data => {
             const response = getPagingData(data, page, limit);
             res.send(response);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error fetching user with login " + req.body.nome
+                message: "Error fetching user with login " + req.body.name
             });
         });
 };
@@ -69,7 +70,7 @@ exports.findAll = (req, res) => {
     const { page, size } = req.query;
     const { limit, offset } = getPagination(page, size);
 
-    Usuarios.findAndCountAll({ order: [['id', 'ASC']], limit, offset })
+    Users.findAndCountAll({ order: [['id', 'ASC']], limit, offset })
         .then(data => {
             const response = getPagingData(data, page, limit);
             res.send(response);

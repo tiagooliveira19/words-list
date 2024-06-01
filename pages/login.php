@@ -12,10 +12,10 @@
 
             <form class="mt-5" autocomplete="off" id="login-form">
                 <div class="col">
-                    <input type="text" class="form-control" name="nome" id="nome" required placeholder="Name">
+                    <input type="text" class="form-control" name="name" id="name" required placeholder="Name">
                 </div>
                 <div class="col mt-3">
-                    <input type="password" class="form-control" name="senha" id="senha" required placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="password" required placeholder="Password">
                 </div>
 
                 <div class="col mt-3">
@@ -43,18 +43,14 @@
 
             <form class="mt-5" autocomplete="off" id="register-form">
                 <div class="col">
-                    <input type="text" class="form-control" name="nome" id="nome" required placeholder="Name">
+                    <input type="text" class="form-control" name="name" id="name" required placeholder="Name">
                 </div>
                 <div class="col mt-3">
-                    <input type="password" class="form-control" name="senha" id="senha" required placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="password" required placeholder="Password">
                 </div>
                 <div class="col mt-3">
-                    <input type="tel" class="form-control" name="telefone" id="telefone" required placeholder="Phone">
+                    <input type="email" class="form-control" name="email" id="email" required placeholder="Email">
                 </div>
-                <div class="col mt-3">
-                    <input type="text" class="form-control" name="endereco" id="endereco" required placeholder="Address">
-                </div>
-
                 <div class="col mt-3">
                     <button type="submit" class="btn btn-dark w-100">Register</button>
                 </div>

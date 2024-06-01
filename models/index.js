@@ -19,7 +19,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.usuarios = require('./usuarios')(sequelize, Sequelize);
+db.users = require('./users')(sequelize, Sequelize);
 db.words = require('./words')(sequelize, Sequelize);
 
 module.exports = db;

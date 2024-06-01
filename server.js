@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
     return res.json({ message: "Testing..." });
 });
 
-require("./routes/usuarios.routes")(app);
+require("./routes/users.routes")(app);
 require("./routes/words.routes")(app);
 
 // set port, listen for requests

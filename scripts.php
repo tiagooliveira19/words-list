@@ -24,7 +24,7 @@
         startsPage();
 
         // Gets value of variable on localStorage
-        let logged = localStorage.getItem('LOGADO');
+        let logged = localStorage.getItem('LOGGED');
 
         // Verifies if user is logged
         if (logged) {
@@ -36,8 +36,8 @@
         $('#sign-out').click(function () {
 
             // Cleans localStorage
-            localStorage.removeItem('LOGADO');
-            localStorage.removeItem('USUARIO_LOGADO');
+            localStorage.removeItem('LOGGED');
+            localStorage.removeItem('USER_LOGGED');
 
             toastr.warning('See you later!', '', {
                 closeButton: true,
@@ -56,10 +56,10 @@
         });
 
         // Phone mask
-        $('input[type="tel"]').inputmask({
+        /* $('input[type="tel"]').inputmask({
             mask: ["(99) 9999-9999", "(99) 99999-9999"],
             keepStatic: true
-        });
+        }); */
 
         // Switches to login form
         $('#btn-register').click(function () {
