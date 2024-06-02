@@ -13,9 +13,9 @@
             <input class="form-control" type="text" id="search-word-historic" placeholder="Type the word">
         </div>
 
-        <div class="col-md-3 ml-10">
+        <!-- <div class="col-md-3 ml-10">
             <button class="btn btn-dark" type="button" id="btn-search-historic">Search</button>
-        </div>
+        </div> -->
 
         <div class="col-md-6"></div>
     </div>

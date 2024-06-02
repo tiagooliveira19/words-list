@@ -1,4 +1,4 @@
-const { where } = require('sequelize');
+const { where, Op } = require('sequelize');
 const db = require('../models');
 const Historics = db.historics;
 
@@ -53,6 +53,25 @@ exports.search = (req, res) => {
         .then(data => {
             // const response = getPagingData(data, page, limit);
             const response = data.dataValues;
+            res.send(response);
+        })
+        .catch(err => {
+            res.status(204).send({
+                message: "Error fetching word " + req.body.word + '. No register found!'
+            });
+        });
+};
+
+// Fetches a register by search data (Like)
+exports.searchLike = (req, res) => {
+
+    const { page, size } = req.query;
+    const { limit, offset } = getPagination(page, size);
+
+    Historics.findAndCountAll({ where: { word: { [Op.like]: `${req.params.word}%` } } }, limit, offset)
+        .then(data => {
+            const response = getPagingData(data, page, limit);
+            // const response = data.dataValues;
             res.send(response);
         })
         .catch(err => {

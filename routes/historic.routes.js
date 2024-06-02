@@ -12,6 +12,9 @@ module.exports = app => {
 
     // Fetches register by search data
     router.get("/:word", historics.search);
+    
+    // Fetches register by search data (Like)
+    router.get("/like/:word", historics.searchLike);
 
     app.use('/entries/en/historic', router);
 }

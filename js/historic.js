@@ -1,7 +1,18 @@
+$('#search-word-historic').keyup(function () {
+    
+    let search = $(this).val();
+    searchWordHistoricLike (search);
+
+    if (!search) {
+        setTimeout(function () {
+            fetchesWordsHistoric(0);
+        }, 2000); 
+    }
+});
+
 // Fetches and listing all registers
 function fetchesWordsHistoric (page) {
 
-    // $.get('http://localhost:3000/entries/en?page=' + page, function (response) {
     $.get('http://localhost:3000/entries/en/historic/all?page=' + page, function (response) {
 
         var table_body = 'table-body-historic';
@@ -65,6 +76,55 @@ function searchWordHistoric (dataSearch, data) {
 
             } else {
                 registerWord (data);
+            }
+        }
+    });
+}
+
+// Searches word (Like)
+function searchWordHistoricLike (dataSearch) {
+
+    $.ajax({
+        url: 'http://localhost:3000/entries/en/historic/like/' + dataSearch,
+        dataType: 'json',
+        type: 'get',
+
+        success: function (response) {
+
+            if (response['totalItems'] > 0) {
+
+                // console.log(response);
+
+                var table_body = 'table-body-historic';
+
+
+                $('#total-itens-historic').html(response['totalItems']);
+                $('#current-page-historic').val(response['currentPage']);
+                $('#div-pagination-historic').removeClass('hidden').fadeIn('slow');
+
+                disablesButton(response['currentPage'], response['totalPages'], 'previous-historic', 'next-historic');
+
+                let pageNumber = response['currentPage'] + 1;
+                $('#page-number-historic').html(pageNumber);
+
+
+                $('#' + table_body).empty();
+
+                $.each(response['historics'], function (key, json) {
+
+                    $('#' + table_body)
+                        .append(
+                            '<tr>'+
+                            '<td>'+ json['id'] +'</td>' +
+                            '<td>'+ json['word'] +'</td>' +
+                            '<td>'+ formatesDateExibition(json['createdAt']) +'</td>' +
+                            '</tr>'
+                        );
+                });
+            } else {
+                $('#table-body-historic')
+                    .html('<tr class="text-center"><td colspan="7">No record found!</td></tr>');
+                $('#div-pagination-historic').addClass('hidden');
             }
         }
     });

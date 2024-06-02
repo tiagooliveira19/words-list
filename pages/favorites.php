@@ -13,15 +13,15 @@
             <input class="form-control" type="text" id="search-word-favorites" placeholder="Type the word">
         </div>
 
-        <div class="col-md-3 ml-10">
+        <!-- <div class="col-md-3 ml-10">
             <button class="btn btn-dark" type="button" id="btn-search-favorites">Search</button>
-        </div>
+        </div> -->
 
         <div class="col-md-6"></div>
     </div>
 
     <div class="col-md-12 mt-4 div-info">
-        <p><span id="total-itens-favorites">0</span> record(s) available in our database:</p>
+        <p><span id="total-itens">0</span> record(s) available in our database:</p>
 
         <div class="col-md-11 margin-auto mt-5">
             <table class="table table-striped table-dark text-center">

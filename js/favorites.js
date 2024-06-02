@@ -1,3 +1,26 @@
+$(document).on("click", ".unfavorite", function() { 
+
+    let word = $(this).attr('id');
+
+    let data = {
+        'word' : word
+    };
+
+    unfavoriteWord (data);
+});
+
+$('#search-word-favorites').keyup(function () {
+    
+    let search = $(this).val();
+    searchWordLike (search);
+
+    if (!search) {
+        setTimeout(function () {
+            fetchesWords(0);
+        }, 2000); 
+    }
+});
+
 // Fetches and listing all words
 function fetchesWords (page) {
 
@@ -39,16 +62,54 @@ function fetchesWords (page) {
     });
 }
 
-$(document).on("click", ".unfavorite", function() { 
+// Searches word (Like)
+function searchWordLike (dataSearch) {
 
-    let word = $(this).attr('id');
+    $.ajax({
+        url: 'http://localhost:3000/entries/en/like/' + dataSearch,
+        dataType: 'json',
+        type: 'get',
 
-    let data = {
-        'word' : word
-    };
+        success: function (response) {
 
-    unfavoriteWord (data);
-});
+            if (response['totalItems'] > 0) {
+
+                // console.log(response);
+
+                var table_body = 'table-body-favorites';
+
+                $('#total-itens').html(response['totalItems']);
+                $('#current-page').val(response['currentPage']);
+                $('#div-pagination').removeClass('hidden').fadeIn('slow');
+
+                disablesButton(response['currentPage'], response['totalPages'], 'previous', 'next');
+
+                let pageNumber = response['currentPage'] + 1;
+                $('#page-number').html(pageNumber);
+
+                $('#' + table_body).empty();
+
+                $.each(response['words'], function (key, json) {
+
+                    $('#' + table_body)
+                        .append(
+                            '<tr>'+
+                            '<td>'+ json['id'] +'</td>' +
+                            '<td>'+ json['word'] +'</td>' +
+                            '<td>'+ json['phonetic'] +'</td>' +
+                            '<td>'+ json['meanings'] +'</td>' +
+                            '<td>'+ verifiesFavorite (json['favorite'], json['word']) +'</td>' +
+                            '</tr>'
+                        );
+                });
+            } else {
+                $('#table-body-favorites')
+                    .html('<tr class="text-center"><td colspan="7">No record found!</td></tr>');
+                $('#div-pagination').addClass('hidden');
+            }
+        }
+    });
+}
 
 // Virifies favorite
 function verifiesFavorite (favorite, word) {

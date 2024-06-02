@@ -2,7 +2,7 @@
 
 * Project Name: words-list
 * Quick summary: APIs and application to listing words information
-* Version: 1.1
+* Version: 1.0
 * Notice: <i>This is a challenge by <a href="https://coodesh.com" target="_blank">Coodesh</a></i>
 
 ### How do I get set up? ###
