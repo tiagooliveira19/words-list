@@ -16,6 +16,11 @@ const getPagingData = (data, page, limit) => {
     return { totalItems, users, totalPages, currentPage };
 };
 
+const TokenGenerator = require( 'token-generator' )({
+    salt: 'your secret ingredient for this magic application',
+    timestampMap: 'abcdefghij', // 10 chars array for obfuscation proposes
+});
+
 // Creates and saves a new user
 exports.create = (req, res) => {
     // Validates a request
@@ -28,9 +33,9 @@ exports.create = (req, res) => {
     // Creates a new user
     const user = new Users({
         name: req.body.name,
-        password: new Buffer( req.body.password).toString('base64'), // It does password cryptography
+        password: new Buffer(req.body.password).toString('base64'), // It does password cryptography
         email: req.body.email,
-        token: 'Token'
+        token: TokenGenerator.generate()
         /* token: req.body.token */
     });
 
@@ -54,7 +59,8 @@ exports.login = (req, res) => {
 
     Users.findOne({ where: { name: req.body.name, password: new Buffer(req.body.password).toString('base64') } })
         .then(data => {
-            const response = getPagingData(data, page, limit);
+            // const response = getPagingData(data, page, limit);
+            const response = data.dataValues;
             res.send(response);
         })
         .catch(err => {

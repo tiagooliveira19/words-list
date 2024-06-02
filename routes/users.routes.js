@@ -5,10 +5,10 @@ module.exports = app => {
     var router = require("express").Router();
 
     // Creates a new user
-    router.post("/add", users.create);
+    // router.post("/add", users.create);
 
     // Fetch user by passed data
-    router.post("/login", users.login);
+    // router.post("/login", users.login);
 
     // Fetches all users
     router.get("/", users.findAll);

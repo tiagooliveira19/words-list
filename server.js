@@ -28,9 +28,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-    return res.json({ message: "Testing..." });
+    // return res.json({ message: "Testing..." });
+    return res.json({ "message": "Fullstack Challenge 🏅 - Dictionary" });
 });
 
+require("./routes/auth.routes")(app);
 require("./routes/users.routes")(app);
 require("./routes/words.routes")(app);
 require("./routes/historic.routes")(app);
