@@ -4,7 +4,7 @@
 function startsPage () {
     $('#login').addClass('light-gray');
     $('.login').fadeIn('fast');
-    $('.words, #form-content, #sign-out, .historic, #form-content-historic').addClass('hidden').fadeOut('fast');
+    $('.words, #form-content, #sign-out, .favorites, #form-content-favorites, .historic, #form-content-historic').addClass('hidden').fadeOut('fast');
 }
 
 // Changes layout structure when user is logged
@@ -14,7 +14,7 @@ function userLogged () {
 
     $('.words').removeClass('hidden').fadeIn('fast');
     $('#words').removeClass('hidden').addClass('light-gray').fadeIn('fast');
-    $('#form-content, #sign-out, #historic').removeClass('hidden').fadeIn('fast');
+    $('#form-content, #sign-out, #favorites, #historic').removeClass('hidden').fadeIn('fast');
 }
 
 /* function wordsHistoric () {
@@ -27,9 +27,9 @@ function userLogged () {
 } */
 
 // Changes date to database format
-function formatesDate (data) {
+/* function formatesDate (data) {
     return data.getFullYear() + '-' + (data.getMonth() + 1) + '-' + data.getDate() + ' ' + data.toLocaleTimeString();
-}
+} */
 
 // Changes the date to display to users
 function formatesDateExibition (data) {
@@ -38,16 +38,16 @@ function formatesDateExibition (data) {
 }
 
 // Disables pagination buttons
-function disablesButton (currentPage, totalPages) {
+function disablesButton (currentPage, totalPages, previous, next) {
     if (currentPage === 0) {
-        $('#previous').css({'pointer-events': 'none', 'color': '#CCCCCC'});
+        $('#' + previous).css({'pointer-events': 'none', 'color': '#CCCCCC'});
     } else {
-        $('#previous').css({'pointer-events': 'all', 'color': 'inherit'});
+        $('#' + previous).css({'pointer-events': 'all', 'color': 'inherit'});
     }
 
     if (currentPage === (totalPages - 1)) {
-        $('#next').css({'pointer-events': 'none', 'color': '#CCCCCC'});
+        $('#' + next).css({'pointer-events': 'none', 'color': '#CCCCCC'});
     } else {
-        $('#next').css({'pointer-events': 'all', 'color': 'inherit'});
+        $('#' + next).css({'pointer-events': 'all', 'color': 'inherit'});
     }
 }

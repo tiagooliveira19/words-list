@@ -13,6 +13,10 @@
                     </li> -->
 
                     <li class="nav-item">
+                        <a class="nav-link hidden" id="favorites">Favorites</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link hidden" id="historic">Historic</a>
                     </li>
                 </ul>

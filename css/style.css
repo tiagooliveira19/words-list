@@ -118,7 +118,7 @@ code {
     cursor: pointer;
 }
 
-#page-number {
+#page-number, #page-number-historic {
     font-size: 18px;
     cursor: not-allowed;
 }

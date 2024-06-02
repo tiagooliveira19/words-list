@@ -4,14 +4,14 @@ module.exports = app => {
 
     var router = require("express").Router();
 
+    // Fetches all registers
+    router.get("/all", historics.findAll);
+
     // Creates a new register
-    router.post("/historic", historics.create);
+    router.post("/word", historics.create);
 
     // Fetches register by search data
-    router.get("/historic/:word", historics.search);
+    router.get("/:word", historics.search);
 
-    // Fetches all words
-    router.get("/", historics.findAll);
-
-    app.use('/entries/en', router);
+    app.use('/entries/en/historic', router);
 }

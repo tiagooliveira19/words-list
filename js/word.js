@@ -75,38 +75,6 @@ $('#btn-search').click(function () {
     });
 });
 
-// Searches word in historic
-function searchWordHistoric (dataSearch, data) {
-
-    $.ajax({
-        url: 'http://localhost:3000/entries/en/historic/' + dataSearch['word'],
-        dataType: 'json',
-        type: 'get',
-        // data: dataSearch,
-
-        success: function (response) {
-
-            // console.log(response);
-
-            if (response) {
-                
-                toastr.warning('Already registered word!', '', {
-                    closeButton: true,
-                    progressBar: true,
-                    positionClass: "toast-top-right",
-                    preventDuplicates: true,
-                    showDuration: "300",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                });
-
-            } else {
-                registerWord (data);
-            }
-        }
-    });
-}
-
 // Searches word
 function searchWord (dataSearch, data) {
 
@@ -135,48 +103,6 @@ function searchWord (dataSearch, data) {
             } else {
                 favoriteWord (data);
             }
-        }
-    });
-}
-
-// Registers word in database
-function registerWord (data) {
-
-    $.ajax({
-        // url: 'http://localhost:3000/entries/en/word',
-        url: 'http://localhost:3000/entries/en/historic',
-        dataType: 'json',
-        type: 'post',
-        data: data,
-
-        success: function (response) {
-
-            toastr.success('Word registered in historic!', '', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: "toast-top-right",
-                preventDuplicates: true,
-                showDuration: "300",
-                showMethod: "fadeIn",
-                hideMethod: "fadeOut"
-            });
-
-            /* setTimeout(function () {
-                location.reload();
-            }, 2000); */
-        },
-
-        error: function (response) {
-
-            toastr.error(response['responseJSON']['message'], '', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: "toast-top-right",
-                preventDuplicates: true,
-                showDuration: "300",
-                showMethod: "fadeIn",
-                hideMethod: "fadeOut"
-            });
         }
     });
 }

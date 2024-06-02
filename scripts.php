@@ -12,13 +12,15 @@
 <script type="text/javascript" src="/js/functions.js"></script>
 <script type="text/javascript" src="/js/user.js"></script>
 <script type="text/javascript" src="/js/word.js"></script>
+<script type="text/javascript" src="/js/favorites.js"></script>
 <script type="text/javascript" src="/js/historic.js"></script>
 <script>
 
     $(document).ready(function () {
 
-        // Fetches and listing all words
+        // Fetches and listing all words in historic
         fetchesWords(0);
+        fetchesWordsHistoric(0);
 
         // Changes layout structure when user is not logged
         startsPage();
@@ -55,12 +57,6 @@
             }, 1800);
         });
 
-        // Phone mask
-        /* $('input[type="tel"]').inputmask({
-            mask: ["(99) 9999-9999", "(99) 99999-9999"],
-            keepStatic: true
-        }); */
-
         // Switches to login form
         $('#btn-register').click(function () {
             $('.login-form').fadeOut('slow', function () {
@@ -75,7 +71,7 @@
             });
         });
 
-        // Switches to next page
+        // Switches to next page (Favorites)
         $('#next').click(function () {
 
             let currentPage = $('#current-page').val();
@@ -84,13 +80,31 @@
             fetchesWords(page);
         });
 
-        // Switches to previous page
-        $('#previous').click(function () {
+        // Switches to previous page (Favorites)
+         $('#previous').click(function () {
 
             let currentPage = $('#current-page').val();
             let page = parseInt(currentPage) - 1;
 
             fetchesWords(page);
+        });
+
+        // Switches to next page (Historic)
+        $('#next-historic').click(function () {
+
+            let currentPage = $('#current-page-historic').val();
+            let page = parseInt(currentPage) + 1;
+
+            fetchesWordsHistoric(page);
+        });
+
+        // Switches to previous page (Historic)
+        $('#previous-historic').click(function () {
+
+            let currentPage = $('#current-page-historic').val();
+            let page = parseInt(currentPage) - 1;
+
+            fetchesWordsHistoric(page);
         });
     });
 </script>
