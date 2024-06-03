@@ -50,6 +50,10 @@ code {
     line-height: 15px;
 }
 
+.va-text-top {
+    vertical-align: text-top;
+}
+
 /* Navbar */
 
 .navbar {

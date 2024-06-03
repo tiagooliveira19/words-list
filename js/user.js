@@ -23,7 +23,6 @@ $('#login-form').submit(function (e) {
 function registersUser (data) {
 
     $.ajax({
-        // url: 'http://localhost:3000/api/users/add',
         url: 'http://localhost:3000/auth/signup',
         dataType: 'json',
         type: 'post',
@@ -66,7 +65,6 @@ function registersUser (data) {
 function fetchesUser (data, name) {
 
     $.ajax({
-        // url: 'http://localhost:3000/api/users/login',
         url: 'http://localhost:3000/auth/signin',
         dataType: 'json',
         type: 'post',

@@ -13,6 +13,9 @@ module.exports = (sequelize, Sequelize) => {
         favorite: {
             type: Sequelize.INTEGER
         },
+        user: {
+            type: Sequelize.STRING
+        },
         createdAt: {
             type: "DATETIME",
             defaultValue: sequelize.literal("CURRENT_TIMESTAMP")

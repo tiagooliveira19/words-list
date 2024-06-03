@@ -13,7 +13,11 @@ $('#search-word-historic').keyup(function () {
 // Fetches and listing all registers
 function fetchesWordsHistoric (page) {
 
-    $.get('http://localhost:3000/entries/en/historic/all?page=' + page, function (response) {
+    let user = localStorage.getItem('USER_LOGGED');
+
+    $.get(`http://localhost:3000/entries/en/historic/all/word/${user}/?page=` + page, function (response) {
+
+        // console.log(response)
 
         var table_body = 'table-body-historic';
 
@@ -38,6 +42,7 @@ function fetchesWordsHistoric (page) {
                         '<td>'+ json['id'] +'</td>' +
                         '<td>'+ json['word'] +'</td>' +
                         '<td>'+ formatesDateExibition(json['createdAt']) +'</td>' +
+                        '<td>'+ json['user'] +'</td>' +
                         '</tr>'
                     );
             });
@@ -52,8 +57,10 @@ function fetchesWordsHistoric (page) {
 // Searches word in historic
 function searchWordHistoric (dataSearch, data) {
 
+    let user = localStorage.getItem('USER_LOGGED');
+
     $.ajax({
-        url: 'http://localhost:3000/entries/en/historic/' + dataSearch['word'],
+        url: 'http://localhost:3000/entries/en/historic/' + dataSearch['word'] + '/' + user,
         dataType: 'json',
         type: 'get',
         // data: dataSearch,
@@ -84,8 +91,10 @@ function searchWordHistoric (dataSearch, data) {
 // Searches word (Like)
 function searchWordHistoricLike (dataSearch) {
 
+    let user = localStorage.getItem('USER_LOGGED');
+
     $.ajax({
-        url: 'http://localhost:3000/entries/en/historic/like/' + dataSearch,
+        url: 'http://localhost:3000/entries/en/historic/like/' + dataSearch + '/' + user,
         dataType: 'json',
         type: 'get',
 
@@ -118,6 +127,7 @@ function searchWordHistoricLike (dataSearch) {
                             '<td>'+ json['id'] +'</td>' +
                             '<td>'+ json['word'] +'</td>' +
                             '<td>'+ formatesDateExibition(json['createdAt']) +'</td>' +
+                            '<td>'+ json['user'] +'</td>' +
                             '</tr>'
                         );
                 });

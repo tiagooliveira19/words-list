@@ -3,6 +3,7 @@
     <div class="col-md-12 mt-3 w-90 cabecalho display-flex">
         <div class="col-md-6">
             <label class="cabecalho-label">Historic</label>
+            <i class="fa-solid fa-rotate-right reload pointer va-text-top" title="Reload"></i>
         </div>
 
         <div class="col-md-4"></div>
@@ -13,11 +14,7 @@
             <input class="form-control" type="text" id="search-word-historic" placeholder="Type the word">
         </div>
 
-        <!-- <div class="col-md-3 ml-10">
-            <button class="btn btn-dark" type="button" id="btn-search-historic">Search</button>
-        </div> -->
-
-        <div class="col-md-6"></div>
+        <div class="col-md-4"></div>
     </div>
 
     <div class="col-md-12 mt-4 div-info">
@@ -30,7 +27,7 @@
                         <th>Id</th>
                         <th>Word</th>
                         <th>Date</th>
-                        <!-- <th>Actions</th> -->
+                        <th>User</th>
                     </tr>
                 </thead>
                 <tbody id="table-body-historic">

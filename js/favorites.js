@@ -24,7 +24,9 @@ $('#search-word-favorites').keyup(function () {
 // Fetches and listing all words
 function fetchesWords (page) {
 
-    $.get('http://localhost:3000/entries/en?page=' + page, function (response) {
+    let user = localStorage.getItem('USER_LOGGED');
+
+    $.get(`http://localhost:3000/entries/en/${user}?page=` + page, function (response) {
 
         var table_body = 'table-body-favorites';
 
@@ -50,6 +52,7 @@ function fetchesWords (page) {
                         '<td>'+ json['word'] +'</td>' +
                         '<td>'+ json['phonetic'] +'</td>' +
                         '<td>'+ json['meanings'] +'</td>' +
+                        '<td>'+ json['user'] +'</td>' +
                         '<td>'+ verifiesFavorite (json['favorite'], json['word']) +'</td>' +
                         '</tr>'
                     );
@@ -65,8 +68,10 @@ function fetchesWords (page) {
 // Searches word (Like)
 function searchWordLike (dataSearch) {
 
+    let user = localStorage.getItem('USER_LOGGED');
+
     $.ajax({
-        url: 'http://localhost:3000/entries/en/like/' + dataSearch,
+        url: 'http://localhost:3000/entries/en/like/' + dataSearch + '/' + user,
         dataType: 'json',
         type: 'get',
 
@@ -98,6 +103,7 @@ function searchWordLike (dataSearch) {
                             '<td>'+ json['word'] +'</td>' +
                             '<td>'+ json['phonetic'] +'</td>' +
                             '<td>'+ json['meanings'] +'</td>' +
+                            '<td>'+ json['user'] +'</td>' +
                             '<td>'+ verifiesFavorite (json['favorite'], json['word']) +'</td>' +
                             '</tr>'
                         );
@@ -156,8 +162,10 @@ function favoriteWord (data) {
 // Unfavorites word
 function unfavoriteWord (data) {
 
+    let user = localStorage.getItem('USER_LOGGED');
+
     $.ajax({
-        url: 'http://localhost:3000/entries/en/'+ data['word'] +'/unfavorite',
+        url: 'http://localhost:3000/entries/en/'+ data['word'] + '/' + user +'/unfavorite',
         dataType: 'json',
         type: 'delete',
         // data: data,

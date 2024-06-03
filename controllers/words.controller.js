@@ -31,7 +31,8 @@ exports.create = (req, res) => {
         word: req.body.word,
         phonetic: req.body.phonetic,
         meanings: req.body.meanings,
-        favorite: req.body.favorite
+        favorite: req.body.favorite,
+        user: req.body.user
     });
 
     // Saves word created at database
@@ -52,7 +53,7 @@ exports.search = (req, res) => {
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
 
-    Words.findOne({ where: { word: req.params.word } })
+    Words.findOne({ where: { word: req.params.word, user: req.params.user } })
         .then(data => {
             // const response = getPagingData(data, page, limit);
             const response = data.dataValues;
@@ -71,7 +72,7 @@ exports.searchLike = (req, res) => {
     const { page, size } = req.query;
     const { limit, offset } = getPagination(page, size);
 
-    Words.findAndCountAll({ where: { word: { [Op.like]: `${req.params.word}%` } } }, limit, offset)
+    Words.findAndCountAll({ where: { word: { [Op.like]: `${req.params.word}%` }, user: req.params.user } }, limit, offset)
         .then(data => {
             const response = getPagingData(data, page, limit);
             // const response = data.dataValues;
@@ -84,49 +85,13 @@ exports.searchLike = (req, res) => {
         });
 };
 
-// Favorites word
-/* exports.favorite = (req, res) => {
-    
-    const { page, size } = req.query;
-    const { limit } = getPagination(page, size);
-
-    Words.update({ favorite: 1 }, { where : { word: req.body.word } })
-        .then(data => {
-            const response = getPagingData(data, page, limit);
-            res.send(response);
-        })
-        .catch(err => {
-            res.status(204).send({
-                message: "Error to favorite word " + req.body.word + '!'
-            });
-        });
-} */
-
-// Unfavorites word
-/* exports.unFavorite = (req, res) => {
-    
-    const { page, size } = req.query;
-    const { limit } = getPagination(page, size);
-
-    Words.update({ favorite: 0 }, { where : { word: req.body.word } })
-        .then(data => {
-            const response = getPagingData(data, page, limit);
-            res.send(response);
-        })
-        .catch(err => {
-            res.status(204).send({
-                message: "Error to unfavorite word " + req.body.word + '!'
-            });
-        });
-} */
-
 // Fetches all words
 exports.findAll = (req, res) => {
 
     const { page, size } = req.query;
     const { limit, offset } = getPagination(page, size);
 
-    Words.findAndCountAll({ order: [['id', 'DESC']], limit, offset })
+    Words.findAndCountAll({ where: { user: req.params.user }, order: [['id', 'DESC']], limit, offset })
         .then(data => {
             const response = getPagingData(data, page, limit);
             res.send(response);
@@ -145,7 +110,7 @@ exports.delete = (req, res) => {
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
 
-    Words.destroy({ where : { word: req.params.word } })
+    Words.destroy({ where : { word: req.params.word, user: req.params.user } })
         .then(data => {
             const response = getPagingData(data, page, limit);
             res.send(response);

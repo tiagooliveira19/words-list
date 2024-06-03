@@ -106,5 +106,9 @@
 
             fetchesWordsHistoric(page);
         });
+
+        $('.reload').click(function () {
+            location.reload();
+        });
     });
 </script>

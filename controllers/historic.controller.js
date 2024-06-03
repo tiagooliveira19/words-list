@@ -28,7 +28,8 @@ exports.create = (req, res) => {
 
     // Creates a new word
     const historic = new Historics({
-        word: req.body.word
+        word: req.body.word,
+        user: req.body.user
     });
 
     // Saves word created at database
@@ -49,7 +50,7 @@ exports.search = (req, res) => {
     const { page, size } = req.query;
     const { limit } = getPagination(page, size);
 
-    Historics.findOne({ where: { word: req.params.word } })
+    Historics.findOne({ where: { word: req.params.word, user: req.params.user } })
         .then(data => {
             // const response = getPagingData(data, page, limit);
             const response = data.dataValues;
@@ -68,7 +69,7 @@ exports.searchLike = (req, res) => {
     const { page, size } = req.query;
     const { limit, offset } = getPagination(page, size);
 
-    Historics.findAndCountAll({ where: { word: { [Op.like]: `${req.params.word}%` } } }, limit, offset)
+    Historics.findAndCountAll({ where: { word: { [Op.like]: `${req.params.word}%` }, user: req.params.user } }, limit, offset)
         .then(data => {
             const response = getPagingData(data, page, limit);
             // const response = data.dataValues;
@@ -87,7 +88,7 @@ exports.findAll = (req, res) => {
     const { page, size } = req.query;
     const { limit, offset } = getPagination(page, size);
 
-    Historics.findAndCountAll({ order: [['id', 'DESC']], limit, offset })
+    Historics.findAndCountAll({ where: { user: req.params.user }, order: [['id', 'DESC']], limit, offset })
         .then(data => {
             const response = getPagingData(data, page, limit);
             res.send(response);

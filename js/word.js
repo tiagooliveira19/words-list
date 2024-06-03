@@ -43,7 +43,8 @@ $('#btn-search').click(function () {
                 'word' : word,
                 'phonetic' : phonetics.join(', '),
                 'meanings' : meanings.join(', '),
-                'favorite' : 1
+                'favorite' : 1,
+                'user' : localStorage.getItem('USER_LOGGED')
             };
 
             let dataSearch = {
@@ -78,8 +79,10 @@ $('#btn-search').click(function () {
 // Searches word
 function searchWord (dataSearch, data) {
 
+    let user = localStorage.getItem('USER_LOGGED');
+
     $.ajax({
-        url: 'http://localhost:3000/entries/en/' + dataSearch['word'],
+        url: 'http://localhost:3000/entries/en/' + dataSearch['word'] + '/' + user,
         dataType: 'json',
         type: 'get',
         // data: dataSearch,

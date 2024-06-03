@@ -3,6 +3,7 @@
     <div class="col-md-12 mt-3 w-90 cabecalho display-flex">
         <div class="col-md-6">
             <label class="cabecalho-label">Favorites</label>
+            <i class="fa-solid fa-rotate-right reload pointer va-text-top" title="Reload"></i>
         </div>
 
         <div class="col-md-4"></div>
@@ -13,11 +14,7 @@
             <input class="form-control" type="text" id="search-word-favorites" placeholder="Type the word">
         </div>
 
-        <!-- <div class="col-md-3 ml-10">
-            <button class="btn btn-dark" type="button" id="btn-search-favorites">Search</button>
-        </div> -->
-
-        <div class="col-md-6"></div>
+        <div class="col-md-4"></div>
     </div>
 
     <div class="col-md-12 mt-4 div-info">
@@ -31,6 +28,7 @@
                         <th>Word</th>
                         <th>Phonetic</th>
                         <th>Meanings</th>
+                        <th>User</th>
                         <th>Favorite</th>
                     </tr>
                 </thead>

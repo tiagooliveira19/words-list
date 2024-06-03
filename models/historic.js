@@ -4,6 +4,9 @@ module.exports = (sequelize, Sequelize) => {
         word: {
             type: Sequelize.STRING
         },
+        user: {
+            type: Sequelize.STRING
+        },
         createdAt: {
             type: "DATETIME",
             defaultValue: sequelize.literal("CURRENT_TIMESTAMP")

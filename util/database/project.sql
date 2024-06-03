@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Jun-2024 às 15:07
+-- Tempo de geração: 03-Jun-2024 às 03:35
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `historics`
+--
+
+CREATE TABLE `historics` (
+  `id` int(11) NOT NULL,
+  `word` varchar(255) DEFAULT NULL,
+  `user` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT current_timestamp(),
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -49,6 +63,7 @@ CREATE TABLE `words` (
   `phonetic` varchar(255) DEFAULT NULL,
   `meanings` varchar(255) DEFAULT NULL,
   `favorite` int(11) DEFAULT NULL,
+  `user` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT current_timestamp(),
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -56,6 +71,12 @@ CREATE TABLE `words` (
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `historics`
+--
+ALTER TABLE `historics`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `users`
@@ -72,6 +93,12 @@ ALTER TABLE `words`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `historics`
+--
+ALTER TABLE `historics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `users`

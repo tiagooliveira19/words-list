@@ -1,5 +1,3 @@
-// const { response } = require("express");
-
 // Changes layout structure when user is not logged
 function startsPage () {
     $('#login').addClass('light-gray');
@@ -16,20 +14,6 @@ function userLogged () {
     $('#words').removeClass('hidden').addClass('light-gray').fadeIn('fast');
     $('#form-content, #sign-out, #favorites, #historic').removeClass('hidden').fadeIn('fast');
 }
-
-/* function wordsHistoric () {
-    $('#words').removeClass('light-gray').fadeOut('fast');
-    $('.words, #form-content').addClass('hidden').fadeOut('fast');
-
-    $('.historic').removeClass('hidden').fadeIn('fast');
-    $('#historic').removeClass('hidden').addClass('light-gray').fadeIn('fast');
-    $('#form-content-historic').removeClass('hidden').fadeIn('fast');
-} */
-
-// Changes date to database format
-/* function formatesDate (data) {
-    return data.getFullYear() + '-' + (data.getMonth() + 1) + '-' + data.getDate() + ' ' + data.toLocaleTimeString();
-} */
 
 // Changes the date to display to users
 function formatesDateExibition (data) {
